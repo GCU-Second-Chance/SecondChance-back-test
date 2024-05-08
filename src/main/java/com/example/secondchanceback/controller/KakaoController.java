@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/v1/login")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://web-secondchance-front-bug-1cupyg2klvnmgdft.sel5.cloudtype.app")
 public class KakaoController {
 
     private final KakaoService kakaoService;
