@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/v1/login")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "https://web-secondchance-front-bug-1cupyg2klvnmgdft.sel5.cloudtype.app/")
+@CrossOrigin(origins = "https://web-secondchance-front-bug-1cupyg2klvnmgdft.sel5.cloudtype.app")
 public class KakaoController {
 
     private final KakaoService kakaoService;
@@ -35,6 +35,7 @@ public class KakaoController {
     private final Logger LOGGER = LoggerFactory.getLogger(KakaoController.class);
 
     @PostMapping("/kakao-login")
+    @CrossOrigin(origins = "https://web-secondchance-front-bug-1cupyg2klvnmgdft.sel5.cloudtype.app")
     public ResponseEntity<UserDto> kakaoLogin(@RequestBody KakaoLoginDto kakaoLoginDto) {
         String code = kakaoLoginDto.getCode();
         LOGGER.info("Get Code from FrontEnd : {}", code);
