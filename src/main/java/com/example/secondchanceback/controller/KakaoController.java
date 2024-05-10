@@ -49,9 +49,9 @@ public class KakaoController {
             UserDto userDto = kakaoService.getUserInfo(accessToken);
             return ResponseEntity.ok(userDto);
         }
-        else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-        }
+//        else {
+//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+//        }
         // accessToken이 null임에도 getUserInfo를 부름.
         // 안부르게 끔 위의 방법을 포함하여
         // 1. map에서 true, false를 사용하여 해봄
