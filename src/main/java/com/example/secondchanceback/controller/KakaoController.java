@@ -27,21 +27,19 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/v1/login")
 @RequiredArgsConstructor
-
+@CrossOrigin(origins = "")
 public class KakaoController {
 
     private final KakaoService kakaoService;
 
     private final Logger LOGGER = LoggerFactory.getLogger(KakaoController.class);
 
-    @PostMapping("/kakao-login")
-    @CrossOrigin(origins = "https://web-secondchance-front-bug-1cupyg2klvnmgdft.sel5.cloudtype.app")
-    public ResponseEntity<UserDto> kakaoLogin(@RequestBody KakaoLoginDto kakaoLoginDto) {
-        String code = kakaoLoginDto.getCode();
+    @GetMapping("/kakao-login")
+    public ResponseEntity<UserDto> kakaoLogin(@RequestParam("code") String code) {
         LOGGER.info("Get Code from FrontEnd : {}", code);
 
         LOGGER.info("Request getAccessToken()");
-        kakaoLoginDto = kakaoService.getAccessToken(code);
+        KakaoLoginDto kakaoLoginDto = kakaoService.getAccessToken(code);
         String accessToken = kakaoLoginDto.getAccess_token();
         LOGGER.info("access_token : {}", accessToken);
 
@@ -49,9 +47,9 @@ public class KakaoController {
             UserDto userDto = kakaoService.getUserInfo(accessToken);
             return ResponseEntity.ok(userDto);
         }
-//        else {
-//            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-//        }
+        else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
         // accessToken이 null임에도 getUserInfo를 부름.
         // 안부르게 끔 위의 방법을 포함하여
         // 1. map에서 true, false를 사용하여 해봄
