@@ -34,8 +34,7 @@ public class KakaoController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(KakaoController.class);
 
-    @PostMapping("/kakao-login")
-    @CrossOrigin(origins = "https://web-secondchance-front-bug-1cupyg2klvnmgdft.sel5.cloudtype.app")
+    @GetMapping("/kakao-login")
     public ResponseEntity<UserDto> kakaoLogin(@RequestBody KakaoLoginDto kakaoLoginDto) {
         String code = kakaoLoginDto.getCode();
         LOGGER.info("Get Code from FrontEnd : {}", code);
