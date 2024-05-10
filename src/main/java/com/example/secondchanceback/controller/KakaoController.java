@@ -34,7 +34,7 @@ public class KakaoController {
 
     private final Logger LOGGER = LoggerFactory.getLogger(KakaoController.class);
 
-    @GetMapping("/kakao-login")
+    @PostMapping("/kakao-login")
     public ResponseEntity<UserDto> kakaoLogin(@RequestBody KakaoLoginDto kakaoLoginDto) {
         String code = kakaoLoginDto.getCode();
         LOGGER.info("Get Code from FrontEnd : {}", code);
